@@ -1,0 +1,105 @@
+﻿<form method="post" action="">
+    <div class="jumbotron">
+        <h2>Нейросетевая система управления технологическим процессом изготовления керамических изделий</h2>
+        @{
+            if (ViewBag.Value != null)
+            {
+                <br />
+                <p>Результат: @{Write(ViewBag.Value);}</p>
+            }
+        }
+    </div>
+
+
+
+    <p>
+        <div class="row">
+            <div class="col-md-4">
+                День недели при прессовании:
+                <input type="number" min="1" max="7" name="X1" style="width: 90px" placeholder="1-7" title="1-7" value="1" required />
+            </div>
+            <div class="col-md-4">
+                Температура:
+                <input type="number" min="18" max="30" step="0.01" name="X2" style="width: 90px" placeholder="°С 18-30" title="°С 18-30" value="18" required />
+            </div>
+            <div class="col-md-4">
+                Влажность на участке:
+                <input type="number" min="25" max="90" step="0.01" name="X3" style="width: 90px" placeholder="% 25-90" title="% 25-90" value="25" required />
+            </div>
+        </div>
+    </p>
+
+    <p>
+        <div class="row">
+            <div class="col-md-4">
+                Температура массы перед пресоваием:
+                <input type="number" min="55" max="105" step="0.01" name="X4" style="width: 90px" placeholder="°С 55-105" title="°С 55-105" value="55" required />
+            </div>
+            <div class="col-md-4">
+                Температура пресс-формы перед пресоваием (спинка):
+                <input type="number" min="20" max="30" step="0.01" name="X5" style="width: 90px" placeholder="°С 20-30" title="°С 20-30" value="20" required />
+            </div>
+            <div class="col-md-4">
+                Температура пресс-формы перед пресоваием (корыто):
+                <input type="number" min="20" max="30" step="0.01" name="X6" style="width: 90px" placeholder="°С 20-30" title="°С 20-30" value="20" required />
+            </div>
+        </div>
+    </p>
+
+    <p>
+        <div class="row">
+            <div class="col-md-4">
+                Температура стакана перед пресованием:
+                <input type="number" min="15" max="45" step="0.01" name="X7" style="width: 90px" placeholder="°С 15-45" title="°С 15-45" value="15" required />
+            </div>
+            <div class="col-md-4">
+                Время переноса кружки с массой от плитки до начала заливки в стакан:
+                <input type="number" min="2" max="120" step="0.01" name="X8" style="width: 90px" placeholder="сек 2-120" title="сек 2-120" value="2" required />
+            </div>
+            <div class="col-md-4">
+                Время выливания массы в прес. стакан:
+                <input type="number" min="0.5" max="3" step="0.01" name="X9" style="width: 90px" placeholder="сек 0,5-3" title="сек 0,5-3" value="0.5" required />
+            </div>
+        </div>
+    </p>
+
+    <p>
+        <div class="row">
+            <div class="col-md-4">
+                Время нахождения массы в стакане: 
+                <input type="number" min="2" max="30" step="0.01" name="X10" style="width: 90px" placeholder="сек 2-30" title="сек 2-30" value="2" required />
+            </div>
+            <div class="col-md-4">
+                Время набора давления:
+                <input type="number" min="1" max="5" step="0.01" name="X11" style="width: 90px" placeholder="сек 1-5" title="сек 1-5" value="1" required />
+            </div>
+            <div class="col-md-4">
+                Давление прессования:
+                <input type="number" min="50" max="120" step="0.01" name="X12" style="width: 90px" placeholder="бар 50-120" title="бар 50-120" value="50" required />
+            </div>
+        </div>
+    </p>
+
+    <p>
+        <div class="row">
+            <div class="col-md-4">
+                Время прессования:
+                <input type="number" min="1" max="5" step="0.01" name="X13" style="width: 90px" placeholder="сек 1-5" title="сек 1-5" value="1" required />
+            </div>
+            <div class="col-md-4">
+                Время массы под давлением:
+                <input type="number" min="5" max="120" step="0.01" name="X14" style="width: 90px" placeholder="сек 5-120" title="сек 5-120" value="5" required />
+            </div>
+            <div class="col-md-4">
+                Время выдержки стержня в пресс-форме без давления:
+                <input type="number" min="5" max="300" step="0.01" name="X15" style="width: 90px" placeholder="сек 5-300" title="сек 5-300" value="5" required />
+            </div>
+        </div>
+    </p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <p><input class="btn btn-default" type="submit" value="Расчитать"></p>
+        </div>
+    </div>
+</form>
