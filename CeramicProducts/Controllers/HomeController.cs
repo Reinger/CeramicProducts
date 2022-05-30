@@ -5,27 +5,35 @@ namespace CeramicProducts.Controllers
 {
     public class HomeController : Controller
     {
+        //Метод для визуализации главной страницы
         [HttpGet]
         public ActionResult Index()
         {
+            //Название страницы
             ViewBag.Title = "Керамические изделия";
             return View();
         }
 
+        //Метод, получает 15 параметров от пользователя, поизводит вычисления и передает представлению результат
         [HttpPost]
         public ActionResult Index(int X1, string X2, string X3, string X4, string X5, string X6, string X7, string X8, string X9, string X10, string X11, string X12, string X13, string X14, string X15)
         {
+            //Преобразуем параметры из строкового типа в тип double (вещественный) и передаем методу для вычисления вероятности результата
             double value = GetResult(double.Parse(X1.ToString()), double.Parse(X2.Replace('.', ',')), double.Parse(X3.Replace('.', ',')), double.Parse(X4.Replace('.', ',')), double.Parse(X5.Replace('.', ',')),
                 double.Parse(X6.Replace('.', ',')), double.Parse(X7.Replace('.', ',')), double.Parse(X8.Replace('.', ',')), double.Parse(X9.Replace('.', ',')), double.Parse(X10.Replace('.', ',')),
                  double.Parse(X11.Replace('.', ',')), double.Parse(X12.Replace('.', ',')), double.Parse(X13.Replace('.', ',')), double.Parse(X14.Replace('.', ',')), double.Parse(X15.Replace('.', ',')));
+            //Передаем результат брака представлению
             ViewBag.Value = value.ToString("f2");
+            //Название страницы
             ViewBag.Title = "Керамические изделия";
             return View();
         }
 
 
+        //Метод для вычисления вероятности брака, по формуле
         private double GetResult(double X1, double X2, double X3, double X4, double X5, double X6, double X7, double X8, double X9, double X10, double X11, double X12, double X13, double X14, double X15)
         {
+            //Формула для получения вероятности брака
             double result = (0.954445808516994 * Math.Tanh(39.9188211950286 * Math.Tanh(5.64723023958692 * (0.434782608695652 * X1 - 1.39130434782609) - 8.75870836860863 * (0.29171528588098 * X2 - 6.66044340723454) + 5.33801191729324 *
                 (0.034441191665232 * X3 - 1.85241949371448) + 4.28438707470747 * (0.034129692832765 * X4 - 2.19453924914676) - 1.02226492798313 * (0.114285714285714 * X5 - 2.88571428571429) + 1.28859181700271 * (0.121212121212121 *
                 X6 - 3.15757575757576) - 1.06867095129049 * (0.071718004805106 * X7 - 2.11471294868577) + 0.192524148958494 * (0.012191702327396 * X8 - 1.00504736476354) - 0.2459009495679 * (0.234466588511137 * X9 - 1.0820633059789) -
@@ -56,6 +64,7 @@ namespace CeramicProducts.Controllers
                 4.17647058823529) - 0.059020476521334 * (0.038834951456311 * X12 - 2.92233009708738) + 12.9701467279431 * (0.169779286926995 * X13 - 1.22920203735144) + 2.94131946309901 * (0.032420165342843 * X14 - 1.18252553088021) -
                 0.295166215711799 * (0.013377926421405 * X15 - 1.04173913043478) + 0.803553495031923) + 75.3493574055589) + 0.048752947165561 + 1) / 2;
 
+            //Возвращаем результат
             return result;
         }
     }
